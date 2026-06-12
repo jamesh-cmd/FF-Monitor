@@ -50,6 +50,22 @@ def format_report(analysis, date_str, thread_count):
         lines.append(f"| {i} | `{word}` | {count} |")
     lines += [""]
 
+    # --- Uncategorised high-frequency terms (discovery feed) ---
+    uncategorised = analysis.get('uncategorised_words', [])
+    lines += [
+        "## 🔍 Uncategorised High-Frequency Terms",
+        "_Words appearing 10+ times today that aren't in any keyword category. "
+        "Review these for emerging slang, new dog whistles, or terms to add to your keyword list._",
+        ""
+    ]
+    if uncategorised:
+        lines += ["| # | Word | Count |", "|---|---|---|"]
+        for i, (word, count) in enumerate(uncategorised, 1):
+            lines.append(f"| {i} | `{word}` | {count} |")
+    else:
+        lines.append("_No uncategorised high-frequency terms today._")
+    lines.append("")
+
     # --- Google Drive URLs (highlighted first) ---
     lines += ["## 🚨 Google Drive / Google Docs URLs", ""]
     gdrive = analysis['gdrive_urls']
