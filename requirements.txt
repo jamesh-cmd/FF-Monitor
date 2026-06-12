@@ -3,4 +3,3 @@ lxml==5.1.0
 requests==2.31.0
 pytz==2024.1
 playwright==1.44.0
-playwright-stealth==1.0.6
