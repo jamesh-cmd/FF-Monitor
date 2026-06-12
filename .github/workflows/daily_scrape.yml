@@ -31,4 +31,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
+          USER_AGENT: ${{ secrets.USER_AGENT }}
         run: python main.py
